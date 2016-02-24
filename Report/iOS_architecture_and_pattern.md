@@ -75,10 +75,28 @@ NSInteger i = 0; // TODO: 双杠前后都有一个空格，后跟半角冒号，
 
 - `KVO`：使用 [FBKVOController](https://github.com/facebook/KVOController)，`dealloc` 时无需显式 `unobserve`。
 
-- targe-action -> BlocksKit
+- `target-action`：`UIControl` 及其子类，`UIGestureRecognizer` 及其子类使用 [BlocksKit](https://github.com/zwaldowski/BlocksKit)。
 
 
 ## 二、MVCS 架构的层次关系
+
+```flow
+st=>start: Start|past:>http://www.google.com[blank]
+e=>end: End:>http://www.google.com
+op1=>operation: My Operation|past
+op2=>operation: Stuff|current
+sub1=>subroutine: My Subroutine|invalid
+cond=>condition: Yes 
+or No?|approved:>http://www.baidu.com
+c2=>condition: Good idea|rejected
+io=>inputoutput: catch something...|request
+
+st->op1(right)->cond
+cond(yes, right)->c2
+cond(no)->sub1(left)->op1
+c2(yes)->io->e
+c2(no)->op2->e
+```
 
 ## 三、模块化的真实含义
 
