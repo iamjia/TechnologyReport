@@ -124,3 +124,12 @@ NSInteger i = 0; // TODO: 双杠前后都有一个空格，后跟半角冒号，
 
 	- 重构的技巧：以各种 extract 方式为主。rename 为辅。单元测试可以帮上忙。
 
+
+## 四、工具的使用
+
+- 相信版本管理的可靠性
+
+- git 和 markdown
+
+- 为什么我不用 CocoaPods
+
