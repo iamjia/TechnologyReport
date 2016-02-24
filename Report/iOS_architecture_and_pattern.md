@@ -80,27 +80,47 @@ NSInteger i = 0; // TODO: 双杠前后都有一个空格，后跟半角冒号，
 
 ## 二、MVCS 架构的层次关系
 
-```flow
-st=>start: Start|past:>http://www.google.com[blank]
-e=>end: End:>http://www.google.com
-op1=>operation: My Operation|past
-op2=>operation: Stuff|current
-sub1=>subroutine: My Subroutine|invalid
-cond=>condition: Yes 
-or No?|approved:>http://www.baidu.com
-c2=>condition: Good idea|rejected
-io=>inputoutput: catch something...|request
+1）`MVCS` 的含义
 
-st->op1(right)->cond
-cond(yes, right)->c2
-cond(no)->sub1(left)->op1
-c2(yes)->io->e
-c2(no)->op2->e
-```
+- `View`：只负责 `GUI` 及 `UI` 的组织布局。
 
-## 三、模块化的真实含义
+- `Controller`：负责 `Model` 层与 `View` 层的对接，即使在 `iOS` 中也不一定是 `UIViewController`，切勿对号入座！
+
+- `Model`：只负责数据业务模型的定义及业务相关处理。
+
+- `Service`：数据的获取，处理，存储，查询等。
+
+正如上面描述，各层次之间应该保持严格的独立性，互相不出现在其它层次中，以最大程度地降低耦合，提高复用性。
+对于 `Controller` 的概念也应该是广义的，并且可以推广到局部的。
+
+例如 2.1：
+`View` 的数据源绑定操作应该放到 `Controller` 层（再次强调，绝不能与 `UIViewController` 划等号），这时利用 `OC` 的语法特性，推荐的做法是抽出一个 `View` 的数据绑定 `Category`，这里的 `Category` 就是办演的 `Controller` 角色。
+
+例如 2.2：
+`Service` 层中，数据获取会抽离为单独的网络请求层，而数据存储，查询则抽离为数据管理层，于是 `Service` 就是前面两层的 `Controller`，并且处理一些耦合性的操作，如数据后处理，业务排序等。
 
 
-## 四、避免过早优化之重构的时机及意义
+2）`iOS` 中的 `UIViewController` 
 
+`UIViewController` 首先是 `View` 层的一部分，除 `View` 以外的支持则是 `Controller` 层。也就是说 `UIViewController` 可以把 `self.view` 放到其它纯 `UIView` 层次里，而 `UIViewController` 则只作为 `Controller` 层使用。
+
+
+## 三、避免过早优化之重构的时机及意义
+
+- **千万不要过度设计**：逻辑设计应该追求极致的“刚好”，以刚好满足当前产品需求，并在已知的范围内达到最优的设计为宜。
+为以后可能不存在的事情多写一句代码和复杂设计都只会给日后的代码维护和扩展挖天坑而已。
+*总之就是要避免当前卵用的设计。*
+
+- **千万不要过早优化**：需求实现最初阶段，不过把精力放在局部的优化上面。根据需求的不稳定性来决定实现的最优程度。毕竟按计划完成需求更加重要。质朴的设计可以从根源上消除根本不必要的优化。
+*总之就是要找准优化的点，做到有效优化。*
+
+- **各位爷一定要重构**：
+
+	- 重构的目的：提高代码的扩展性和可维护性。
+
+	- 重构的原则：保证当前需求满足的前提下，改善项目结构，抽取重复逻辑等。
+
+	- 重构的时机：迭代结束 -> 下轮迭代初始。
+
+	- 重构的技巧：以各种 extract 方式为主。rename 为辅。单元测试可以帮上忙。
 
