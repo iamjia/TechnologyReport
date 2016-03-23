@@ -4,6 +4,7 @@
 
 - [2016.02.24 iOS 项目架构及规范](Report/iOS_architecture_and_pattern.md)
 - [2016.03.23 基于 DH 算法的密钥交换原理](Report/dh.md)
+- [2016.03.23 reat navie 开发原生 app 的一些考虑](Report/rn.md)
 
 
 
