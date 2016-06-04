@@ -145,11 +145,13 @@ int b = 9;
 
 ** 3、auto layout 之前如何布局 **
 
-** 4、core data 的使用经验， NSPredicate **
+** 4、iOS 中可用的多线程技术有哪些？使用经验 **
 
-** 5、如何提高 UITableViewCell 的滚动帧率 **
+** 5、core data 的使用经验， NSPredicate **
 
-** 6、设计一个类似 sina weibo 的草稿箱功能 **
+** 6、如何提高 UITableViewCell 的滚动帧率 **
 
-** 7、hybride （js bridge，js patch，react native 等）**
+** 7、设计一个类似 sina weibo 的草稿箱功能 **
+
+** 8、hybride （js bridge，js patch，react native 等）**
 
