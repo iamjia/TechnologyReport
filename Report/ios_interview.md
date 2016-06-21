@@ -147,7 +147,7 @@ int b = 9;
 
 **4、iOS 中可用的多线程技术有哪些？使用经验**
 
-**5、core data 的使用经验， NSPredicate**
+**5、sqlite 或 core data 的使用经验， 画出学生选课的ER模型，NSPredicate**
 
 **6、如何提高 UITableViewCell 的滚动帧率**
 
