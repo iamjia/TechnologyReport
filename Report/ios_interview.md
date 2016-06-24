@@ -44,8 +44,8 @@ int b = 4;
 ```
 
 ```c
-float a = 3;
-float b = 4;
+float a = 3.01;
+float b = 4.002;
 
 // 交换 a, b 的值
 ```
@@ -101,7 +101,7 @@ int b = 9;
 
 - property 中 @synthesize , @dynamic 分别表示什么
 
-- 实现以下 property 的 getter, setter
+- 实现以下 property 在 MRC 环境下的 getter, setter
 
 ```objective-c
 
