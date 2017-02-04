@@ -7,20 +7,20 @@
 	* [PayPal REST API guide](https://github.com/paypal/api-standards/blob/master/api-style-guide.md)
 	* [Microsoft REST API guide](https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md)
 
-* `Response for APP`: repsonses return with **HTTP code 200 always**, with business code in response body.
+* `Response for APP`: responses return **HTTP code 200 always**, with business code in response body.
 
 * `Response JSON only`: JSON property name must be JSON style (linux style), **never camelCased**
 
 * `Different environment`: environment for develop, production (maybe preview release)
 
-* `Business code`: confirm to HTTP standard code, except some specialized situations with custom code for specific error.
+* `Business code`: confirm to HTTP standard code, except some specialized situations with custom code for specific errors.
 
 
 ## Security
 
-* HTTPS only: confirm TLS1.2 at least
+* HTTPS only: confirm **TLS1.2** at least
 
-	validate SSL in [qcloud](https://www.qcloud.com/product/ssl)
+	You can validate SSL in [qcloud](https://www.qcloud.com/product/ssl).
 
 * Optional access token: to validate user identity, JWT is suggested.
 
@@ -32,12 +32,12 @@ Common data like APP info, device info, token should fill in **request head**.
 
 ### Token in HTTP HEAD
 
-token will be passed with `Authorization` field in HTTP HEAD
+Token will be passed with `Authorization` field in HTTP HEAD
 
 ``` javascript
 {
-    Accept-Language: en;q=1,
-    Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9eyJvcGVyYXRvcl9pZCI6MiwiaWF0IjoxNDg2MTg2NDMwLCJpc3MiOiJndWd1YmFuZyJ9.5-cwqbZN4CknOD8jZcO_2MQdK4pjCk4PJE7PfVstwpw,
+    "Accept-Language": "en;q=1",
+    "Authorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9eyJvcGVyYXRvcl9pZCI6MiwiaWF0IjoxNDg2MTg2NDMwLCJpc3MiOiJndWd1YmFuZyJ9.5-cwqbZN4CknOD8jZcO_2MQdK4pjCk4PJE7PfVstwpw",
 }
 ```
 
@@ -50,8 +50,8 @@ APP info and device info passed as `User-Agent` field in HTTP HEAD
 
 ``` javascript
 {
-    Accept-Language: en;q=1,
-    User-Agent: SDYClient/2.1.0 (iPhone; iOS 10.2; Scale/2.00),
+    "Accept-Language": "en;q=1",
+    "User-Agent": "SDYClient/2.1.0 (iPhone; iOS 10.2; Scale/2.00)",
 }
 ```
 
@@ -72,8 +72,8 @@ APP info and device info passed as `User-Agent` field in HTTP HEAD
 
 ``` javascript
 {
-    Accept-Language: en;q=1,
-    User-Agent: SDYClient/2.1.0 (iPhone; iOS 10.2; Scale/2.00),
+    "Accept-Language": "en;q=1",
+    "User-Agent": "SDYClient/2.1.0 (iPhone; iOS 10.2; Scale/2.00)",
 }
 ```
 
@@ -85,6 +85,10 @@ Pages of results should be referred to consistently by the query parameters `pag
 
 * `page_size`: refers to the amount of results per request
 
+* `total_items`: refers to response items total count, stay in response root
+
+* `total_pages`: refers to response items total pages count, stay in response root
+
 
 ## Response to APP
 
@@ -93,12 +97,14 @@ Pages of results should be referred to consistently by the query parameters `pag
    "data": {}, // or [ ] or others
    "total_items": 48, // optional
    "total_pages": 2, // optional
-   "err": "description for develper", // debug msg
+   "err": "description for develper", // debug message for developer
    "code": 200, // 200 is ok
    "text": "prompt to user", // prompt to user
    "alert": 0, 
 }
 ```
+
+`total`
 
 | alert | Description |
 |:-------------|:-------------|
