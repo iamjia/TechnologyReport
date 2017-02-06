@@ -32,7 +32,7 @@ Common data like APP info, device info, token should fill in **request head**.
 
 ### Token in HTTP HEAD
 
-Token will be passed with `Authorization` field in HTTP HEAD
+Token will be passed with `Authorization` field in **HTTP HEAD**
 
 ``` javascript
 {
@@ -44,7 +44,7 @@ Token will be passed with `Authorization` field in HTTP HEAD
 
 ### APP info, device info in HTTP HEAD
 
-APP info and device info passed as `User-Agent` field in HTTP HEAD
+APP info and device info passed as `User-Agent` field in **HTTP HEAD**
 
 *for iOS:*
 
@@ -73,9 +73,22 @@ APP info and device info passed as `User-Agent` field in HTTP HEAD
 ``` javascript
 {
     "Accept-Language": "en;q=1",
-    "User-Agent": "SDYClient/2.1.0 (iPhone; iOS 10.2; Scale/2.00)",
+    "User-Agent": "cn.sudiyi.app.courier/2.1.0 (Motorola XT1085; Android 5.1; Scale/2.00)"
 }
 ```
+
+**User-Agent** format: 
+`$[PackageName]/$[AppVersion] ($[Device]; $[OS] $[OSVersion]; Scale/$[Density])`
+
+| Field | Description |
+|:-------------|:-------------|
+| $[PackageName] | Android app PackageName, eg: cn.sudiyi.app.courier | 
+| $[AppVersion] | app version, eg: 2.1.0 | 
+| $[Device] | device hardware, eg: Motorola XT1085 | 
+| $[OS] | operating system, eg: Android | 
+| $[OSVersion] | operating system version, eg: 5.1 | 
+| $[Density] | Android screen density, eg: 1.0, 1.5, 2.0,3.0 | 
+
 
 ### Paging
 
