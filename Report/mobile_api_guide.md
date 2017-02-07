@@ -5,7 +5,7 @@
 
 * `RESTful API`:
 	* [PayPal REST API guide](https://github.com/paypal/api-standards/blob/master/api-style-guide.md)
-	* [Microsoft REST API guide](https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md)
+<!-- 	* [Microsoft REST API guide](https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md) -->
 
 * `Response for APP`: responses return **HTTP code 200 always**, with business code in response body.
 
@@ -13,12 +13,12 @@
 
 * `Different environment`: environment for develop, production (maybe preview release)
 
-* `Business code`: confirm to HTTP standard code, except some specialized situations with custom code for specific errors.
+* `Business code`: conform to HTTP standard code, except some specialized situations with custom code for specific errors.
 
 
 ## Security
 
-* HTTPS only: confirm **TLS1.2** at least
+* HTTPS only: conform **TLS1.2** at least
 
 	You can validate SSL in [qcloud](https://www.qcloud.com/product/ssl).
 
@@ -107,17 +107,21 @@ Pages of results should be referred to consistently by the query parameters `pag
 
 ``` javascript
 {
-   "data": {}, // or [ ] or others
-   "total_items": 48, // optional
-   "total_pages": 2, // optional
-   "err": "description for develper", // debug message for developer
    "code": 200, // 200 is ok
-   "text": "prompt to user", // prompt to user
-   "alert": 0, 
+   "data": {}, // or [ ] or others
+   "paging": {
+      "total_items": 48, // optional
+      "total_pages": 2, // optional
+   },
+   "message": {
+      "error": "description for develper", // debug message for developer
+      "prompt": "prompt to user", // optional, prompt to user
+      "alert": 0, // optional
+   }
 }
 ```
 
-`total`
+`alert`
 
 | alert | Description |
 |:-------------|:-------------|
