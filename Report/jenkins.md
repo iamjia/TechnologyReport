@@ -20,8 +20,6 @@
 
 * [IOS CONTINUOUS INTEGRATION WITH FASTLANE & JENKINS](https://apiumhub.com/tech-blog-barcelona/ios-continuous-integration/)
 
-* [Continuous Integration and Delivery for iOS with Jenkins and Fastlane (Part 1)](https://medium.com/@cherrmann.com/continuous-integration-and-delivery-for-ios-with-jenkins-and-fastlane-part-1-3b17f1901a73)
-
 
 ## Install Tomcat + java runtime
 
@@ -29,6 +27,8 @@
 
 * [JDK management between versions](https://docs.oracle.com/javase/8/docs/technotes/guides/install/mac_jdk.html#A1096903)
 
+We will use JDK for java 8 here, since java 11 has not widely supported by Jenkins and its plugins.
+ 
 
 ## Install Jenkins and launch in Tomcat
 
@@ -42,10 +42,16 @@
 
 ## Configure Jenkins and Install plugins
 
-### Configure Global Security and set up your account of Jenkins.
+* [Continuous Integration and Delivery for iOS with Jenkins and Fastlane (Part 1)](https://medium.com/@cherrmann.com/continuous-integration-and-delivery-for-ios-with-jenkins-and-fastlane-part-1-3b17f1901a73)
+
+* Configure Global Security and set up your account of Jenkins.
+
+* Set system admin email in `System Preferences`: which will be used to send mails.
+	
+	* Configure SMTP server of your email and test connections.
 
 
-### Plugins to install
+### Jenkins plugins to install
 
 Developer tool
 
@@ -72,6 +78,38 @@ Build control
 * [build-name-setter](http://wiki.jenkins-ci.org/display/JENKINS/Build+Name+Setter+Plugin)
 
 * [Environment Injector](https://wiki.jenkins-ci.org/display/JENKINS/EnvInject+Plugin)
+
+
+#### Configure Jenkins plugins
+
+* GitLab
+
+* Email Extension Template
+
+* Keychains and Provisioning Profiles Management
+
+
+
+### Create your Jenkins jobs
+
+* Set a display name for job if necessary
+
+* Add your git repo
+
+	* Check on `Recursively update submodules` in `Additional Behaviours` if necessary
+
+* Build trigger
+
+* Build environment
+
+
+#### Code review CI job
+
+
+#### Daily build CI job
+
+
+#### CI build CD job
 
 
 
