@@ -8,15 +8,22 @@
 
 	* ci build CD
 
-* Distribution ipa files with fir.im
+* Distribute ipa files with fir.im
 
 * Manage Jenkins server with ssh 
 
 
 
+## Why Jenkins
+
+* [iOS Continous integration: Xcode Server, Jenkins, Travis and fastlane](http://thebugcode.github.io/ios-continous-integration-choosing-a-build-server-and-tooling/)
+
+* [IOS CONTINUOUS INTEGRATION WITH FASTLANE & JENKINS](https://apiumhub.com/tech-blog-barcelona/ios-continuous-integration/)
+
+* [Continuous Integration and Delivery for iOS with Jenkins and Fastlane (Part 1)](https://medium.com/@cherrmann.com/continuous-integration-and-delivery-for-ios-with-jenkins-and-fastlane-part-1-3b17f1901a73)
 
 
-## Install tomcat + java runtime
+## Install Tomcat + java runtime
 
 * [Installing Tomcat on macOS 10.14 Mojave](https://wolfpaulus.com/mac/tomcat/)
 
@@ -33,15 +40,39 @@
 
 
 
-## Configure Jenkins and Install plugins 
+## Configure Jenkins and Install plugins
 
+### Configure Global Security and set up your account of Jenkins.
+
+
+### Plugins to install
+
+Developer tool
+
+* [Xcode integration](https://wiki.jenkins.io/display/JENKINS/Xcode+Plugin)
+
+* [Keychains and Provisioning Profiles Management](Keychains and Provisioning Profiles Management)
+
+
+Code repository
+
+* [GitLab](https://wiki.jenkins-ci.org/display/JENKINS/GitLab+Plugin)
+
+* [Gitlab Hook Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Gitlab+Hook+Plugin)
+
+* [Gitlab Merge Request Builder](https://wiki.jenkins-ci.org/display/JENKINS/Gitlab+Merge+Request+Builder+Plugin)
+
+
+Build control
+
+* [Commit Message Trigger Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Commit+Message+Trigger+Plugin)
+
+* [Email Extension Template](https://wiki.jenkins-ci.org/display/JENKINS/Email-ext+Template+Plugin)
+
+* [build-name-setter](http://wiki.jenkins-ci.org/display/JENKINS/Build+Name+Setter+Plugin)
+
+* [Environment Injector](https://wiki.jenkins-ci.org/display/JENKINS/EnvInject+Plugin)
 
 
 
 ## Reference
-
-* http://thebugcode.github.io/ios-continous-integration-choosing-a-build-server-and-tooling/
-
-* https://medium.com/@cherrmann.com/continuous-integration-and-delivery-for-ios-with-jenkins-and-fastlane-part-1-3b17f1901a73
-
-* https://apiumhub.com/tech-blog-barcelona/ios-continuous-integration/
