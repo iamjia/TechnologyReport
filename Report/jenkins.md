@@ -61,7 +61,7 @@ Developer tool
 
 * [Xcode integration](https://wiki.jenkins.io/display/JENKINS/Xcode+Plugin)
 
-* [Keychains and Provisioning Profiles Management](Keychains and Provisioning Profiles Management)
+* [Keychains and Provisioning Profiles Management](http://wiki.jenkins-ci.org/display/JENKINS/Keychains+and+Provisioning+Profiles+Plugin)
 
 
 Code repository
@@ -109,6 +109,11 @@ Configure `Default Content`, `Advanced Settings` of your templates by different 
 
 3. Keychains and Provisioning Profiles Management
 
+Upload your keychain contains ipa signed certificates and private key here, and configure it.
+
+Upload your app provisioning profile files one by one.
+
+The first time you build an ipa generation job, the access of your keychain on your Jenkins server will request a trust with GUI prompt, and you must trust it manually.
 
 
 ### Create your Jenkins jobs
@@ -124,7 +129,7 @@ Configure `Default Content`, `Advanced Settings` of your templates by different 
 3. Build trigger
    
 * Gerrit Trigger
-	* Choose your gerrit server added above `XXGerrit`
+	* Choose your gerrit server added above: `XXGerrit`
 
 4. Build environment
 
