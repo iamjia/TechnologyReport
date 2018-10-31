@@ -109,11 +109,11 @@ Configure `Default Content`, `Advanced Settings` of your templates by different 
 
 3. Keychains and Provisioning Profiles Management
 
-Upload your keychain contains ipa signed certificates and private key here, and configure it.
+* Upload your keychain contains ipa signed certificates and private key here, and configure it.
 
-Upload your app provisioning profile files one by one.
+* Upload your app provisioning profile files one by one.
 
-The first time you build an ipa generation job, the access of your keychain on your Jenkins server will request a trust with GUI prompt, and you must trust it manually.
+*The first time you build an ipa generation job, the access of your keychain on your Jenkins server will request a trust with GUI prompt, and you must trust it manually.*
 
 
 ### Create your Jenkins jobs
