@@ -42,13 +42,17 @@ We will use JDK for java 8 here, since java 11 has not widely supported by Jenki
 
 ## Configure Jenkins and Install plugins
 
-* [Continuous Integration and Delivery for iOS with Jenkins and Fastlane (Part 1)](https://medium.com/@cherrmann.com/continuous-integration-and-delivery-for-ios-with-jenkins-and-fastlane-part-1-3b17f1901a73)
+1. [Continuous Integration and Delivery for iOS with Jenkins and Fastlane (Part 1)](https://medium.com/@cherrmann.com/continuous-integration-and-delivery-for-ios-with-jenkins-and-fastlane-part-1-3b17f1901a73)
 
-* Configure Global Security and set up your account of Jenkins.
+2. Configure Global Security and set up your account of Jenkins.
 
-* Set system admin email in `System Preferences`: which will be used to send mails.
+3. Set system admin email in `System Preferences`: which will be used to send mails.
+
+* Configure `E-mail Notification`
+
+* Configure `Extended E-mail Notification`
 	
-	* Configure SMTP server of your email and test connections.
+Configure SMTP server of your email and test connections.
 
 
 ### Jenkins plugins to install
@@ -61,6 +65,8 @@ Developer tool
 
 
 Code repository
+
+* [Gerrit Trigger](http://wiki.jenkins-ci.org/display/JENKINS/Gerrit+Trigger)
 
 * [GitLab](https://wiki.jenkins-ci.org/display/JENKINS/GitLab+Plugin)
 
@@ -82,28 +88,51 @@ Build control
 
 #### Configure Jenkins plugins
 
-* GitLab
+Go to `Manage Jenkins`
 
-* Email Extension Template
+1. Gerrit Trigger > Add New Server > Named like `XXGerrit`
 
-* Keychains and Provisioning Profiles Management
+ Fillup the basic information and `SSH Keyfile`.
+
+
+2. Editable Email Notification Templates > Add New Template
+
+* iOS code review template
+
+* iOS ci build template
+
+
+Configure `Default Content`, `Advanced Settings` of your templates by different purpose.
+
+*Plenty of variables will help your template contents configuration. You can even inject your own variables outside, such as git change logs.*
+
+
+3. Keychains and Provisioning Profiles Management
 
 
 
 ### Create your Jenkins jobs
 
-* Set a display name for job if necessary
+1. Set a display name for job if a human readable name is necessary
 
-* Add your git repo
+2. Add your git repo `Source Code`
 
-	* Check on `Recursively update submodules` in `Additional Behaviours` if necessary
+* Check on `Recursively update submodules` in `Additional Behaviours` if you used `git submodule`
+  
+* Add `Additional Behaviours` in `Source Code`: `Gerrit Trigger`
 
-* Build trigger
+3. Build trigger
+   
+* Gerrit Trigger
+	* Choose your gerrit server added above `XXGerrit`
 
-* Build environment
+4. Build environment
 
 
 #### Code review CI job
+
+
+* GitLab
 
 
 #### Daily build CI job
@@ -111,6 +140,8 @@ Build control
 
 #### CI build CD job
 
+* Gerrit Trigger
+	* Add `Trigger on`: `Change Merged`
 
 
 ## Reference
