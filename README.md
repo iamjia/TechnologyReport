@@ -8,4 +8,4 @@
 - [2016.06.04 iOS 面试指导大纲](Report/ios_interview.md)
 - [2017.02.04 移动端 REST API 规范](Report/mobile_api_guide.md)
 - [2018.09.14 Xcode 项目配置规范](Report/project_setting.md)
-- [2018.10.29 iOS 持续集成环境的搭建](Report/jenkins.md)
+- [2018.10.29 iOS 持续集成环境的搭建](Report/jenkins/jenkins.md)
