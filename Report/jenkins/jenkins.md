@@ -138,15 +138,56 @@ Configure `Default Content`, `Advanced Settings` of your templates by different 
 
 We use java property files to configure Jenkins build environment with injecting its content as variables during build process.
 
-The sample ci environment configuration file is [here](ci_env.properties).
+ci_env.properties
+```bash
+APP_DOWNLOAD_URL = https://fir.im/your-app-path
+FIR_IM_SHORT = your-app-short-name-in-fir.im
+FIR_IM_TOKEN = your fir.im token
+TC_TARGET_NAME = Xcode target name to build 
+TC_PROJECT_DIR = Xcode project file root directory
+INFO_PLIST_PATH = Targe Info.plist path
+
+# these environment variabls will be injected by Jenkins during buiding process.
+
+FIR_IM_UPLOAD = CHANGE_NOTE=`printf "${PROJECT_DISPLAY_NAME}\\\\nV${IOS_BUILD_VERSION} - Production Environment:\\\\n${GIT_CHANGES_LOG_FIX}"`; \
+fir p "${WORKSPACE}/output/release/${IOS_BUILD_VERSION}.ipa" -T "$FIR_IM_TOKEN" -c "$CHANGE_NOTE" -s "$FIR_IM_SHORT"; \
+# \
+# CHANGE_NOTE=`printf "${PROJECT_DISPLAY_NAME}\\nV${IOS_BUILD_VERSION} - Test Environment:\\\\n${GIT_CHANGES_LOG_FIX}"`; \
+# fir p "${WORKSPACE}/output/debug/${IOS_BUILD_VERSION}.ipa" -T "$FIR_IM_TOKEN" -c "$CHANGE_NOTE" -s "$FIR_IM_SHORT"
+
+# email list of tester who will receive emails: 1@mail.com, cc:2.com,
+TESTER_EMAIL_LIST =
+
+# email address for tester to reply to
+TESTER_REPLY_EMAIL_LIST =
+
+TESTER_EMAIL_CONTENT = V${IOS_BUILD_VERSION} Changes：\n \
+${GIT_CHANGES_LOG} \
+
+TESTER_EMAIL_THEME_SUCCESS = $PROJECT_DISPLAY_NAME V$IOS_BUILD_VERSION delivery for test
+
+TESTER_EMAIL_CONTENT_SUCCESS = $PROJECT_DISPLAY_NAME V$IOS_BUILD_VERSION delivery for test \n \
+\n \
+${TESTER_EMAIL_CONTENT}\n \
+\n \
+APP dwonload:\n \
+${APP_DOWNLOAD_URL}\n \
+\n
+```
+
+*The sample ci environment configuration file is [here](ci_env.properties).*
 
 **0x1. Inject ci_env.properties**: 
 
-Go to `Build Environment` > Check on `Inject environment variables to the build process` > Set `Properties File Path` with `${WORKSPACE}/ci_env.properties`.
+Go to `Build Environment` > Check on `Inject environment variables to the build process`
+
+Properties File Path:
+
+```bash
+${WORKSPACE}/ci_env.properties
+```
 
 **0x2. Set a human readable build name: Go to `Build`**: 
-
-
 
 Go to `Add build step` > `Execute shell`
 
@@ -248,6 +289,11 @@ ${TC_PROJECT_FILE}
 Goto `Add post-build action` > `Editable Email Notification Templates`
 
 Choose your code review templates here.
+
+
+
+## Distribute ipa files with fir.im
+
 
 
 
