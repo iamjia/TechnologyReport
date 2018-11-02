@@ -291,19 +291,121 @@ Goto `Add post-build action` > `Editable Email Notification Templates`
 Choose your code review templates here.
 
 
-
 ## Distribute ipa files with fir.im
+
+Install [fir-cli](https://github.com/dake/fir-cli)
+
+```bash
+gem install fir-cli-dake
+```
+
+Upload ipa file to fir.im with fir-cli
+
+```bash
+fir p "${WORKSPACE}/output/release/${IOS_BUILD_VERSION}.ipa" -T "$FIR_IM_TOKEN" -c "$CHANGE_NOTE" -s "$FIR_IM_SHORT"
+```
+
+
+## CI build CD job
+
+### Gerrit Trigger
+	
+* Add `Trigger on`: `Change Merged`
+
+
+### Build Environment
+
+Check on `Enable Commit Message Trigger`
+
+Keyword:
+```bash
+build
+```
+
+Check on `Keychains and Code Signing Identities` > Add Keychain
+
+* Add `Code Signing Identity` and `Variables Prefix` for develop environment
+
+* Add `Code Signing Identity` and `Variables Prefix` for distribution environment
+
+
+Check on `Mobile Provisioning Profiles` > Add Provisioning Profile
+
+Add provisioning files for app end extensions with different environment (develop, adhoc, distribution).
+
+
+### Build > Xcode
+
+#### General build settings
+  
+Target:
+
+```bash
+${TC_TARGET_NAME}
+```
+
+Settings > Configuration: 
+
+```bash
+Release_CI
+```
+
+Check on `Pack application and build .ipa?`
+
+.ipa filename pattern
+```bash
+${VERSION}
+```
+
+Output directory
+```bash
+${WORKSPACE}/output/release/
+```
+
+#### Code signing settings
+
+Code Signing Identity
+
+```bash
+${ADHOC_CODE_SIGNING_IDENTITY}
+```
+
+
+
+
+#### Advanced Xcode build options
+
+SDK:
+
+```bash
+iphoneos
+```
+
+Custom xcodebuild arguments:
+
+```bash
+APP_PROFILE=${ADHOC_PROVISIONING_PROFILE}
+TODAY_PROFILE=${TODAY_ADHOC_PROVISIONING_PROFILE}
+```
+
+
+Xcode Project Directory:
+
+```bash
+${TC_PROJECT_DIR}
+```
+
+Xcode Project File:
+
+```bash
+${TC_PROJECT_FILE}
+```
+
 
 
 
 
 ## Daily build CI job
-
-
-## CI build CD job
-
-* Gerrit Trigger
-	* Add `Trigger on`: `Change Merged`
 
 
 ## Reference
