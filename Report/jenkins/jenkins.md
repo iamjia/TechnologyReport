@@ -123,9 +123,15 @@ Configure `Default Content`, `Advanced Settings` of your templates by different 
 
 #### 2. Add your git repo in `Source Code Management`
 
-* Check on `Recursively update submodules` in `Additional Behaviours` if you used `git submodule`
+`Git` > `Additional Behaviours` > Add `Advanced sub-modules behaviours`:
+
+Check on `Recursively update submodules`, if you used `git submodule`
   
-* Add `Additional Behaviours` in `Source Code`: `Gerrit Trigger`
+
+`Git` > `Additional Behaviours` > Add `Strategy for choosing what to build`:
+
+Choosing strategy: `Gerrit Trigger`
+
 
 #### 3. Build Triggers
 
