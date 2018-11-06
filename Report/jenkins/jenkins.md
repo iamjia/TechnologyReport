@@ -90,9 +90,9 @@ Build control
 
 Go to `Manage Jenkins`
 
-#### 1. Gerrit Trigger > Add New Server > Named like `XXGerrit`
+#### 1. Gerrit Trigger > Add New Server > Name it like `XXGerrit`
 
- Fillup the basic information and `SSH Keyfile`.
+ Fill up basic information and `SSH Keyfile`.
 
 
 #### 2. Editable Email Notification Templates > Add New Template
