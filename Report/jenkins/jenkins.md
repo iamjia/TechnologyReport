@@ -292,12 +292,12 @@ ${TC_PROJECT_FILE}
 
 Goto `Post-build Actions` > `Add post-build action` > `Editable Email Notification Templates`
 
-Choose your code review templates here.
+Select your code review templates here.
 
 
 ## Distribute ipa files with fir.im
 
-Install [fir-cli](https://github.com/dake/fir-cli)
+Install [fir-cli](https://github.com/dake/fir-cli) command line tool
 
 ```bash
 gem install fir-cli-dake
@@ -334,12 +334,12 @@ build
 
 * Enter a `Variables Prefix` for develop environment, e.g. "DEV"
 
-then you get these Variables for next stop using:
+then you get these Variables for next step using:
 ```bash
 ${DEV_KEYCHAIN_PATH} ${DEV_KEYCHAIN_PASSWORD} ${DEV_CODE_SIGNING_IDENTITY}
 ```
 
-You can add ADHOC settings with the same way
+You can get "ADHOC" variables with the same way:
 ```bash
 ${ADHOC_KEYCHAIN_PATH} ${ADHOC_KEYCHAIN_PASSWORD} ${ADHOC_CODE_SIGNING_IDENTITY}
 ```
@@ -382,46 +382,44 @@ ${WORKSPACE}/output/release/
 
 #### Code signing settings
 
-* Code Signing Identity
+Code Signing Identity
 
-for develop environment:
+*for develop environment:*
 ```bash
 ${DEV_CODE_SIGNING_IDENTITY}
 ```
 
-for adhoc environment:
+*for adhoc environment:*
 ```bash
 ${ADHOC_CODE_SIGNING_IDENTITY}
 ```
 
-* Check on `Sign IPA at build time`
+Check on `Sign IPA at build time`
 
-* Check on `Unlock Keychain`
+Check on `Unlock Keychain`
 
-for develop environment:
+**Keychain path:**
 
-Keychain path:
+*for develop environment:*
 ```bash
 ${DEV_KEYCHAIN_PATH}
 ```
+*for adhoc environment:*
 
-Keychain password:
-```bash
-${DEV_KEYCHAIN_PASSWORD}
-```
-
-for adhoc environment:
-
-Keychain path:
 ```bash
 ${ADHOC_KEYCHAIN_PATH}
 ```
 
-Keychain password:
+**Keychain password:**
+
+*for develop environment:*
+```bash
+${DEV_KEYCHAIN_PASSWORD}
+```
+*for adhoc environment:*
 ```bash
 ${ADHOC_KEYCHAIN_PASSWORD}
 ```
-
 
 #### Advanced Xcode build options
 
@@ -433,11 +431,13 @@ iphoneos
 
 Custom xcodebuild arguments:
 
-`APP_PROFILE` and `TODAY_PROFILE` specified in `Provisioning Profile` of your Xcode project settings.
 ```bash
 APP_PROFILE=${ADHOC_PROVISIONING_PROFILE}
 TODAY_PROFILE=${TODAY_ADHOC_PROVISIONING_PROFILE}
 ```
+
+*`APP_PROFILE` and `TODAY_PROFILE` specified in `Provisioning Profile` of your Xcode project settings.*
+
 
 Xcode Project Directory:
 
@@ -470,7 +470,7 @@ eval $FIR_IM_UPLOAD
 
 Goto `Add post-build action` > `Editable Email Notification Templates`
 
-Choose your ci build templates here.
+Select your ci build templates here.
 
 
 ## Daily build CI job
