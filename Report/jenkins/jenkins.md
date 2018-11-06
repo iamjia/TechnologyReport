@@ -292,7 +292,7 @@ ${TC_PROJECT_FILE}
 
 ### Email
 
-Goto `Add post-build action` > `Editable Email Notification Templates`
+Goto `Post-build Actions` > `Add post-build action` > `Editable Email Notification Templates`
 
 Choose your code review templates here.
 
@@ -370,13 +370,45 @@ ${WORKSPACE}/output/release/
 
 #### Code signing settings
 
-Code Signing Identity
+* Code Signing Identity
 
+for develop environment:
+```bash
+${DEV_CODE_SIGNING_IDENTITY}
+```
+
+for adhoc environment:
 ```bash
 ${ADHOC_CODE_SIGNING_IDENTITY}
 ```
 
+* Check on `Sign IPA at build time`
 
+* Check on `Unlock Keychain`
+
+for develop environment:
+
+Keychain path:
+```bash
+${DEV_KEYCHAIN_PATH}
+```
+
+Keychain password:
+```bash
+${DEV_KEYCHAIN_PASSWORD}
+```
+
+for adhoc environment:
+
+Keychain path:
+```bash
+${ADHOC_KEYCHAIN_PATH}
+```
+
+Keychain password:
+```bash
+${ADHOC_KEYCHAIN_PASSWORD}
+```
 
 
 #### Advanced Xcode build options
@@ -389,11 +421,11 @@ iphoneos
 
 Custom xcodebuild arguments:
 
+`APP_PROFILE` and `TODAY_PROFILE` specified in `Provisioning Profile` of your Xcode project settings.
 ```bash
 APP_PROFILE=${ADHOC_PROVISIONING_PROFILE}
 TODAY_PROFILE=${TODAY_ADHOC_PROVISIONING_PROFILE}
 ```
-
 
 Xcode Project Directory:
 
@@ -408,7 +440,25 @@ ${TC_PROJECT_FILE}
 ```
 
 
+### Post-build Actions
 
+Check on `Execute a set of scripts` > `Execute script only if build succeeds`
+
+then
+`Add build step` > `Execute shell`:
+
+`FIR_IM_UPLOAD` was defined in [ci_env.properties](ci_env.properties)
+
+```bash
+eval $FIR_IM_UPLOAD
+```
+
+
+### Email
+
+Goto `Add post-build action` > `Editable Email Notification Templates`
+
+Choose your ci build templates here.
 
 
 ## Daily build CI job
