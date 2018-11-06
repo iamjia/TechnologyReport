@@ -144,7 +144,7 @@ Choosing strategy: `Gerrit Trigger`
 
 We use java property files to configure Jenkins build environment with injecting its content as variables during build process.
 
-ci_env.properties
+[ci_env.properties](ci_env.properties)
 ```bash
 APP_DOWNLOAD_URL = https://fir.im/your-app-path
 FIR_IM_SHORT = your-app-short-name-in-fir.im
@@ -180,8 +180,6 @@ APP dwonload:\n \
 ${APP_DOWNLOAD_URL}\n \
 \n
 ```
-
-*The sample ci environment configuration file is [here](ci_env.properties).*
 
 **0x1. Inject ci_env.properties**: 
 
@@ -321,23 +319,37 @@ fir p "${WORKSPACE}/output/release/${IOS_BUILD_VERSION}.ipa" -T "$FIR_IM_TOKEN" 
 
 ### Build Environment
 
-Check on `Enable Commit Message Trigger`
+#### Check on `Enable Commit Message Trigger`
 
 Keyword:
 ```bash
 build
 ```
 
-Check on `Keychains and Code Signing Identities` > Add Keychain
+#### Check on `Keychains and Code Signing Identities` > Add Keychain
 
-* Add `Code Signing Identity` and `Variables Prefix` for develop environment
+* Select a keychain you uploaded in `Keychains and Provisioning Profiles Management`
+   
+* Select `Code Signing Identity` for develop environment
 
-* Add `Code Signing Identity` and `Variables Prefix` for distribution environment
+* Enter a `Variables Prefix` for develop environment, e.g. "DEV"
+
+then you get these Variables for next stop using:
+```bash
+${DEV_KEYCHAIN_PATH} ${DEV_KEYCHAIN_PASSWORD} ${DEV_CODE_SIGNING_IDENTITY}
+```
+
+You can add ADHOC settings with the same way
+```bash
+${ADHOC_KEYCHAIN_PATH} ${ADHOC_KEYCHAIN_PASSWORD} ${ADHOC_CODE_SIGNING_IDENTITY}
+```
 
 
-Check on `Mobile Provisioning Profiles` > Add Provisioning Profile
+#### Check on `Mobile Provisioning Profiles` > Add Provisioning Profile
 
-Add provisioning files for app end extensions with different environment (develop, adhoc, distribution).
+Add provisioning profiles for app with different environment (develop, adhoc, distribution).
+
+*Upload your provisioning profiles in `Keychains and Provisioning Profiles Management`.*
 
 
 ### Build > Xcode
