@@ -335,6 +335,7 @@ build
 * Enter a `Variables Prefix` for develop environment, e.g. "DEV", "ADHOC"
 
 then you get these Variables for next step using:
+
 | Environment | Variables |
 |:-------------|:-------------|
 | develop | ${DEV_KEYCHAIN_PATH} ${DEV_KEYCHAIN_PASSWORD} ${DEV_CODE_SIGNING_IDENTITY} |
