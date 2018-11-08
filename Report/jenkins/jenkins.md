@@ -332,17 +332,13 @@ build
    
 * Select `Code Signing Identity` for develop environment
 
-* Enter a `Variables Prefix` for develop environment, e.g. "DEV"
+* Enter a `Variables Prefix` for develop environment, e.g. "DEV", "ADHOC"
 
 then you get these Variables for next step using:
-```bash
-${DEV_KEYCHAIN_PATH} ${DEV_KEYCHAIN_PASSWORD} ${DEV_CODE_SIGNING_IDENTITY}
-```
-
-You can get "ADHOC" variables with the same way:
-```bash
-${ADHOC_KEYCHAIN_PATH} ${ADHOC_KEYCHAIN_PASSWORD} ${ADHOC_CODE_SIGNING_IDENTITY}
-```
+| Environment | Variables |
+|:-------------|:-------------|
+| develop | ${DEV_KEYCHAIN_PATH} ${DEV_KEYCHAIN_PASSWORD} ${DEV_CODE_SIGNING_IDENTITY} |
+| adhoc | ${ADHOC_KEYCHAIN_PATH} ${ADHOC_KEYCHAIN_PASSWORD} ${ADHOC_CODE_SIGNING_IDENTITY} |
 
 
 #### Check on `Mobile Provisioning Profiles` > Add Provisioning Profile
@@ -382,46 +378,31 @@ ${WORKSPACE}/output/release/
 
 #### Code signing settings
 
-Code Signing Identity
 
-*for develop environment:*
-```bash
-${DEV_CODE_SIGNING_IDENTITY}
-```
 
-*for adhoc environment:*
-```bash
-${ADHOC_CODE_SIGNING_IDENTITY}
-```
+| Environment | Code Signing Identity |
+|:-------------|:-------------|
+| develop | ${DEV_CODE_SIGNING_IDENTITY} |
+| adhoc | ${ADHOC_CODE_SIGNING_IDENTITY} |
+
 
 Check on `Sign IPA at build time`
 
 Check on `Unlock Keychain`
 
-**Keychain path:**
+| Environment | Keychain path | Keychain password |
+|:-------------|:-------------|:-------------|
+| develop | ${DEV_KEYCHAIN_PATH} | ${DEV_KEYCHAIN_PASSWORD} |
+| adhoc | ${ADHOC_KEYCHAIN_PATH} | ${ADHOC_KEYCHAIN_PASSWORD} |
 
-*for develop environment:*
-```bash
-${DEV_KEYCHAIN_PATH}
-```
-*for adhoc environment:*
-
-```bash
-${ADHOC_KEYCHAIN_PATH}
-```
-
-**Keychain password:**
-
-*for develop environment:*
-```bash
-${DEV_KEYCHAIN_PASSWORD}
-```
-*for adhoc environment:*
-```bash
-${ADHOC_KEYCHAIN_PASSWORD}
-```
 
 #### Advanced Xcode build options
+		
+Xcode Schema File: name of scheme used of your project
+
+```bash
+${TC_SCHEME_NAME}
+```
 
 SDK:
 
