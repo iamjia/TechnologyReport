@@ -380,7 +380,6 @@ ${WORKSPACE}/output/release/
 #### Code signing settings
 
 
-
 | Environment | Code Signing Identity |
 |:-------------|:-------------|
 | develop | ${DEV_CODE_SIGNING_IDENTITY} |
