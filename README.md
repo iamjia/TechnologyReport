@@ -9,4 +9,4 @@
 - [2017.02.04 移动端 REST API 规范](Report/mobile_api_guide.md)
 - [2018.09.14 Xcode 项目配置规范](Report/project_setting.md)
 - [2018.10.29 iOS 持续集成环境的搭建](Report/jenkins/jenkins.md)
-- [2018.11.14 iOS 应用防 HTTPS MiTM 基本方案](Report/jenkins/ssl_pinning.md)
+- [2018.11.14 iOS 应用防 HTTPS MiTM 基本方案](Report/ssl_pinning.md)
