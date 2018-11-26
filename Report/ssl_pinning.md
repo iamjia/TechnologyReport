@@ -206,7 +206,7 @@ md5 -q -s "$PINNED_CA_CHECK" > ca.check
                 return YES;
             }
             
-            if (errSecCertificateExpired == os && result == kSecTrustResultRecoverableTrustFailure) {
+            if (errSecCertificateExpired == os || result == kSecTrustResultRecoverableTrustFailure) {
                 return YES;
             }
             
