@@ -13,3 +13,6 @@
 - [2018.11.26 iOS 图片存储方式调研结果](Report/iOS_ablum_activity_support.md)
 - [2018.12.06 iOS WKWebview 层次剖析 以及 WebView CSP 的一些应用](Report/webview_csp.md)
 - [2018.12.11 HTTP 状态码一览](Report/http_status_code.md)
+- [2019.2.19 APP Thinning](Report/app_thinning.md)
+
+
