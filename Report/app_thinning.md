@@ -59,10 +59,9 @@
 > 2. extension 的国际化字符串复用 host app 的。// extension 中建立空白的对应语言的国际化字符串文件即可
 
 ###三、其它
-* 坚持纯代码，Xib/Storyboard 会增加 App 体积
 * tintColor 来减少部分图片资源
 * 减少 swift、oc 混编
-* 不支持 Bitcode 的动态库，删除不支持的架构
+* 不支持 Bitcode 的三方动态库，在打包 ipa 时，删除不需要的架构
 
 ### 四、工具
 * [LSUnusedResources](https://github.com/tinymind/LSUnusedResources) 查找未使用资源
